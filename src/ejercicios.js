@@ -1,21 +1,36 @@
 // @TODO Completar...
+// capturo el contenedor
 const contenedor = document.getElementById('contenedor');
-let lista = document.createDocumentFragment();
 
+//  Creo el fragment
+const lista = document.createDocumentFragment();
 
+// Capturo el template definido
+const template = document.getElementById('miTemplate');
+
+// creo el elemento de lista y asigno propiedades
 const ul = document.createElement('ul');
-ul.setAttribute('class', "list-group");
-ul.setAttribute('style', "width : 200px; text-align: center; margin-left: 50px");
+ul.className = 'list-group';
+ul.style.width = '200px';
+ul.style.textAlign = "center";
+ul.style.marginLeft = '50px';
 
+// Anexo el elemento de lista al fragment
 lista.appendChild(ul);
 
+// Capturo el item de lista dentro del template
+const item = template.content.querySelector('li');
+
+// Le asigno propiedades al item
+item.className = 'list-group-item fa fa-cloud';
+
 for (i = 1; i <= 50; i++){
-    let li = `<li class="list-group-item fa  fa-cloud"> Item ${i} </li>`;
-//    let li = `<li class="list-group-item fa fa-bars"> Item ${i} </li>`;
-    console.log(li);
-    lista.firstChild.innerHTML += li;
+    // Asigno el valor al item
+    item.textContent = i;
+    // Clono el nodo con la información cargada
+    const clone = document.importNode(template.content, true);
+    //Asigno el nodo al fragment bajo el nodo de lista UL
+    lista.querySelector('ul').appendChild(clone);
 }
-
+// Asigno el fragment completo al contenedor
 contenedor.appendChild(lista);
-
-
