@@ -20,15 +20,19 @@ lista.appendChild(ul);
 
 // Capturo el item de lista dentro del template
 const item = template.content.querySelector('li');
+const item2 = template.content.querySelector('span');
 
 // Le asigno propiedades al item
 item.className = 'list-group-item fa fa-cloud';
+item2.style.color = 'red';
 
 for (i = 1; i <= 50; i++){
     // Asigno el valor al item
-    item.textContent = i;
+    item2.textContent = i;
+    
     // Clono el nodo con la información cargada
     const clone = document.importNode(template.content, true);
+
     //Asigno el nodo al fragment bajo el nodo de lista UL
     lista.querySelector('ul').appendChild(clone);
 }
